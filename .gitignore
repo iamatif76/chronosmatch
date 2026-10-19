@@ -1,3 +1,5 @@
 
 .snapshots/
 ui/.snapshots/
+orders_ring.dat
+trades_ring.dat
