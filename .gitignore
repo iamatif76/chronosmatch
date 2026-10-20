@@ -3,3 +3,14 @@
 ui/.snapshots/
 orders_ring.dat
 trades_ring.dat
+# Python cache files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local virtual environments
+.venv/
+venv/
+
+# Local environment variables
+.env
