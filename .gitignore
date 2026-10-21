@@ -14,3 +14,6 @@ venv/
 
 # Local environment variables
 .env
+# Runtime ring-buffer data
+/scratch/orders_ring.dat
+/scratch/trades_ring.dat
