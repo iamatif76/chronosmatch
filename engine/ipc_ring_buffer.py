@@ -367,6 +367,9 @@ class MmapRingBuffer:
 
     def read_trade_batch(self, max_batch: int = 1024) -> List[Tuple]:
         """Reads a batch of trade execution reports."""
+        if max_batch <= 0:
+            raise ValueError("max_batch must be a positive integer")
+    
         head = self.get_head()
         tail = self.get_tail()
         available = head - tail

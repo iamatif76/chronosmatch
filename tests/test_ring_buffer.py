@@ -104,3 +104,17 @@ def test_batch_read(temp_ring_buffer):
     assert len(batch2) == 4
     assert [o[0] for o in batch2] == list(range(7, 11))
     assert rb.occupancy == 0
+def test_read_trade_batch_rejects_non_positive_size(tmp_path):
+    path = str(tmp_path / "trade_ring.dat")
+    rb = MmapRingBuffer(
+        path, capacity=16, slot_size=TRADE_SIZE, create=True
+    )
+
+    try:
+        with pytest.raises(ValueError, match="max_batch must be a positive integer"):
+            rb.read_trade_batch(0)
+
+        with pytest.raises(ValueError, match="max_batch must be a positive integer"):
+            rb.read_trade_batch(-1)
+    finally:
+        rb.close()
